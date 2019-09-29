@@ -19,9 +19,10 @@ func main() {
 	c := pb.NewGreeterClient(conn)
 
 	name := os.Args[1]
+	age := int32(123)
 
 	ctx := context.Background()
-	r, err := c.SayHello(ctx, &pb.HelloRequest{Name: name})
+	r, err := c.SayHello(ctx, &pb.HelloRequest{Name: name, Age: age})
 	if err != nil {
 		log.Fatalf("could not greet: %c", err)
 

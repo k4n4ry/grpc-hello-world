@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"net"
+	"strconv"
 
 	pb "github.com/knry0329/grpc-hello-world"
 	"google.golang.org/grpc"
@@ -13,7 +14,7 @@ type server struct{}
 
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
 	log.Printf("Recieved: %v", in.Name)
-	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
+	return &pb.HelloReply{Message: "Hello " + in.Name + ", your age is " + strconv.Itoa(int(in.Age))}, nil
 
 }
 
